@@ -6,6 +6,9 @@
 #Compiled CSS
 res/css-out/
 
+#Database
+/data
+
 ### Windows template
 # Windows image file caches
 Thumbs.db
