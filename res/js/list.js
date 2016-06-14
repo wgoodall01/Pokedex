@@ -9,11 +9,12 @@ $(document).ready(function(){
     });
 
     //Maintain scroll position on page reloads
-    $(document).on("beforeunload", function(){
+    $(window).unload(function(){
         window.sessionStorage.setItem("scrollPosition", window.pageYOffset);
+        return 'no';
     });
 
     if(window.sessionStorage.getItem("scrollPosition")){
-        window.scrollTo(window.sessionStorage.getItem("scrollPosition"));
+        window.scrollTo(0, window.sessionStorage.getItem("scrollPosition"));
     }
 });
