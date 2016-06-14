@@ -1,0 +1,14 @@
+include _cardEntries
+extends base
+
+block head
+    script(src="/r/js/deleteCardButton.js")
+
+block body
+
+    form(action=target, method="post")
+        h1 View a Card
+            .pull-right.btn-group.btn-group-lg.card-controls
+                button.btn.btn-default(type='submit'): i.glyphicon.glyphicon-floppy-disk
+                button.btn.btn-default.delete-card(data-card-id=card._id): i.glyphicon.glyphicon-trash
+        mixin _cardEntries(card)

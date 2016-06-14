@@ -1,0 +1,8 @@
+include _cardEntries
+extends base
+block body
+    form(action="/list/", method="get")
+        h1 Search Cards
+        p Regular expressions are supported in any field.
+        +_cardEntries(filterCard || {})
+        input.btn.btn-primary.btn-lg.action-btn(type="submit", value="Find Card")

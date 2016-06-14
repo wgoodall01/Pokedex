@@ -1,0 +1,35 @@
+include _cardEntries
+extends base
+
+block head
+    script(src="/r/js/list.js")
+    script(src="/r/js/deleteCardButton.js")
+
+
+block body
+    h1 Card Listing
+        .pull-right.btn-group.btn-group-lg.card-controls
+            button.btn.btn-default#search-button: i.glyphicon.glyphicon-search
+            button.btn.btn-default#sort-button: i.glyphicon.glyphicon-sort-by-attributes
+    form.pad-vertical#search-form(method="GET" hidden): fieldset
+        legend Find a Card
+        +_cardEntries(filterCard || {})
+        button.btn.btn-primary.btn-lg.action-btn(type="submit") Find Card
+    table.table.table-striped
+        thead: tr
+            th Name
+            th Qty.
+            th Type
+            th Series
+            th Expansion
+            th Actions
+        each c in cards
+                tr
+                    td: a(href="/view/" + c._id)=c.name
+                    td=c.quantity
+                    td=c.cardType
+                    td=c.series
+                    td=c.expansion
+                    td: div
+                        a.glyphicon.glyphicon-trash.delete-card.action-icon(href="", data-card-id=c._id)
+                        a.glyphicon.glyphicon-edit.action-icon(href="/view/" + c._id)

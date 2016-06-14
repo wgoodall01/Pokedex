@@ -1,0 +1,8 @@
+include _cardEntries
+extends base
+
+block body
+    h1 Add a New Card
+    form(action="/add/", method="post")
+        +_cardEntries({})
+        input.btn.btn-primary.btn-lg.action-btn(type="submit", value="Add Card")

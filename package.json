@@ -1,0 +1,15 @@
+{
+  "name": "Pokedex",
+  "version": "0.0.1",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "express-minify-html": "^0.4.0",
+    "jade": "^1.11.0",
+    "morgan": "^1.7.0",
+    "nedb": "^1.8.0",
+    "node-sass-middleware": "^0.9.8",
+    "pug": "^2.0.0-beta3"
+  }
+}

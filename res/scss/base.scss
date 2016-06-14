@@ -1,0 +1,76 @@
+$primary: #c8311d;
+
+.container-fluid{
+  max-width:900px;
+}
+
+.navbar{
+  border-radius:0;
+  border:none;
+  border-bottom:2px solid $primary;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: $primary;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px fade-out($primary, 0.6);
+  outline: 0 none;
+}
+
+.action-btn{
+  margin:0 auto;
+  display:block;
+  width:300px;
+}
+
+.action-icon{
+  margin-right:5px;
+  padding:3px;
+  text-decoration:none !important;
+  color: black;
+
+  &:hover{
+    color:$primary;
+  }
+}
+
+.btn{
+  transition:box-shadow .2s;
+  border:1px solid $primary;
+
+  &:hover{
+    box-shadow:0 0 7px fade-out(black, .7);
+  }
+}
+
+input{
+  //By default, no border
+  border:none;
+}
+
+.pad-vertical{
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+.btn-primary{
+  background-color:$primary;
+
+  &:hover{
+    background-color:lighten($primary, 5);
+  }
+}
