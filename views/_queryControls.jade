@@ -1,0 +1,20 @@
+include _cardEntries
+
+mixin _findForm(card)
+    fieldset
+        legend Filter
+        +_cardEntries(card || {})
+
+mixin _sortForm(filter)
+    fieldset
+        legend Sort
+        .sort-params
+        button.btn.btn-block.add-sort
+            i.fa.fa-plus-circle
+            span Add a Sort Qualifier
+
+
+
+mixin _queryControls(card, filter)
+    .pad-vertical.search-form: +_findForm(filterCard)
+    .pad-vertical.sort-form: +_sortForm(filter)

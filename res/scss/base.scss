@@ -1,6 +1,19 @@
-@import "bootstrap";
+//Colors
+$brand-primary:  #c8311d;
+$brand-success:  #5cb85c;
+$brand-info:     #5bc0de;
+$brand-warning:  #f09430;
+$brand-danger:   #d9cd2b;
 
-$primary: #c8311d;
+$link-color: #073665;
+
+$input-border-focus: $brand-primary;
+$input-box-shadow-focus: fade-out($brand-primary, .5);
+
+
+@import "bootstrap";
+@import "_variables";
+
 
 .container-fluid{
   max-width:900px;
@@ -8,4 +21,41 @@ $primary: #c8311d;
 
 .body{
   padding-top:20px;
+}
+
+.btn-group-header{
+  margin-top:.2rem;
+}
+
+.btn-action{
+  @extend .btn-primary;
+  @extend .btn-lg;
+  margin:0 auto;
+  width:200px;
+}
+
+.action-icon{
+  color:$gray-light;
+
+  &:hover{
+    color:$gray-dark;
+  }
+}
+
+.pad-vertical{
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.hide{ display:none; }
+
+.page-header{
+  background-color:fade-out($body-bg, 0.05);
+  border-bottom:1px solid $brand-primary;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }

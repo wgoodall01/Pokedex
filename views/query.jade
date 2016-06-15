@@ -1,8 +1,7 @@
-include _cardEntries
+include _queryControls
 extends base
 block body
     form(action="/list/", method="get")
         h1 Search Cards
-        p Regular expressions are supported in any field.
-        +_cardEntries(filterCard || {})
+        +_queryControls(card, filter)
         input.btn.btn-primary.btn-lg.action-btn(type="submit", value="Find Card")

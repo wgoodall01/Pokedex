@@ -24,6 +24,10 @@ app.set("middleware-cfg", {
     morganType:'dev'
 });
 
+app.set("db-cfg", {
+    location: __dirname + "/data"
+});
+
 app.set('port', (process.env.PORT || 8080));
 app.set('env', process.env.DEBUG 
     && ![].includes(process.env.DEBUG.toLowerCase()));

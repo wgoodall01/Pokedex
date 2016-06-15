@@ -1,11 +1,48 @@
 $(document).ready(function(){
+
+    var speed = "fast";
+    
+    var searchForm = $(".search-form");
+    var sortForm = $(".sort-form");
+    var goButton = $(".go-button");
+
+    var searchVisibility = false;
+    var sortVisibility = false;
+
+    var updateVisibility = function(){
+        if(searchVisibility){
+            searchForm.slideDown(speed);
+        }else{
+            searchForm.slideUp(speed);
+        }
+        
+        if(sortVisibility){
+            sortForm.slideDown(speed);
+        }else{
+            sortForm.slideUp(speed);
+        }
+        
+        if(searchVisibility || sortVisibility){
+            goButton.slideDown(speed);
+        }else{
+            goButton.slideUp(speed);
+        }
+        
+        var goIcons = "";
+        if(searchVisibility){ goIcons += '<i class="fa fa-search"></i>'; }
+        if (searchVisibility && sortVisibility){ goIcons += "   &   "; }
+        if (sortVisibility){ goIcons += '<i class="fa fa-sort-alpha-asc"></i>'; }
+        goButton.html(goIcons);
+    };
+
     $("#search-button").click(function(){
-        $("#search-form").slideToggle(200);
+        searchVisibility = !searchVisibility;
+        updateVisibility();
     });
     
     $("#sort-button").click(function(){
-        //Modal of some sort, idk
-        alert("Sort options here")
+        sortVisibility = !sortVisibility;
+        updateVisibility();
     });
 
     //Maintain scroll position on page reloads

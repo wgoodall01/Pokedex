@@ -1,5 +1,6 @@
 include _cardEntries
 extends base
+include _queryControls
 
 block head
     script(src="/r/js/list.js")
@@ -7,14 +8,17 @@ block head
 
 
 block body
-    h1 Card Listing
-        .pull-right.btn-group.btn-group-lg.card-controls
-            button.btn.btn-default#search-button: i.fa.fa-fw.fa-search
-            button.btn.btn-default#sort-button: i.fa.fa-fw.fa-sort-amount-desc
-    form.pad-vertical#search-form(method="GET" hidden): fieldset
-        legend Find a Card
-        +_cardEntries(filterCard || {})
-        button.btn.btn-primary.btn-lg.action-btn(type="submit") Find Card
+    .sticky.page-header
+        h1 Card Listing
+            .btn-group.btn-group-md.btn-group-header.pull-xs-right
+                .btn.btn-secondary-outline#search-button: i.fa.fa-search
+                .btn.btn-secondary-outline#sort-button: i.fa.fa-sort-alpha-asc
+
+        form(method="GET"): fieldset
+            .hide.pad-vertical.search-form: +_findForm(filterCard)
+            .hide.pad-vertical.sort-form: +_sortForm(filter)
+
+            button.btn.btn-action.pad-vertical.hide.go-button(type="submit")
     table.table.table-striped
         thead: tr
             th Name
@@ -31,5 +35,5 @@ block body
                     td=c.series
                     td=c.expansion
                     td: div
-                        a.glyphicon.glyphicon-trash.delete-card.action-icon(href="", data-card-id=c._id)
-                        a.glyphicon.glyphicon-edit.action-icon(href="/view/" + c._id)
+                        a.fa.fa-fw.fa-trash.delete-card.action-icon(href="", data-card-id=c._id)
+                        a.fa.fa-fw.fa-edit.action-icon(href="/view/" + c._id)

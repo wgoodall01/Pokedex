@@ -13,14 +13,14 @@ html
         link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto+Slab:400')
 
         //Font awesome via CDN
-        link(rel='stylesheet', src="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
+        link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
 
         //Base stylesheet
         link(rel='stylesheet', href='/r/css/base.css')
 
-        //jQuery & Bootstrap JS & Bootstrap3-dialog
-        script(src="https://code.jquery.com/jquery-2.2.4.min.js")
-        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
+        //jQuery & jQuery UI & Bootstrap JS & Bootstrap3-dialog
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/js/bootstrap-dialog.min.js")
 
         block head
@@ -35,7 +35,7 @@ html
             form.form-inline.pull-xs-right(action="/list", method="get")
                 .input-group
                     input.form-control(type='text', name="name", placeholder="Find by Name")
-                    span.input-group-btn: button.btn.btn-secondary(type='submit') Go!
+                    span.input-group-btn: button.btn.btn-secondary(type='submit'): i.fa.fa-search
         //Main body
         .container-fluid
             //Flashes
@@ -47,3 +47,10 @@ html
                             strong=message
             //Body
             .body: block body
+
+        //Load JS
+        script(src="/r/js/deleteCardButton.js")
+
+        //position:sticky polyfill & implementation
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/stickyfill/1.1.4/stickyfill.min.js")
+        script(src="/r/js/sticky.js")
