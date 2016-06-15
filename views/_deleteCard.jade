@@ -1,0 +1,19 @@
+block append head
+    script(src="/r/js/deleteCardButton.js")
+
+mixin _deleteCard
+    .modal.fade.delete-modal
+        .modal-dialog: .modal-content
+            .modal-header
+                buttom.close(type="button", data-dismiss="modal")
+                    i.fa.fa-close
+                h4.modal-title Confirm Delete
+            .modal-body
+                h4 Are you sure you want to delete this card? Once deleted, cards can't be recovered.
+            .modal-footer
+                button.btn.btn-lg.btn-primary.modal-delete-button
+                    i.fa.fa-trash.icon-margin-r
+                    span Delete
+                button.btn.btn-lg.btn-primary-outline(data-dismiss="modal")
+                    i.fa.fa-ban.icon-margin-r
+                    span Cancel

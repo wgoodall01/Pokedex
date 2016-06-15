@@ -1,11 +1,10 @@
 include _cardEntries
 extends base
-include _queryControls
+include _deleteCard
 
 block append head
     script(src="/r/js/list.js")
     script(src="/r/js/deleteCardButton.js")
-    +_queryControlsScripts
 
 
 block body
@@ -33,3 +32,6 @@ block body
                     td: div
                         a.fa.fa-fw.fa-trash.delete-card.action-icon.icon-margin-r(href="", data-card-id=c._id)
                         a.fa.fa-fw.fa-edit.action-icon.icon-margin-r(href="/view/" + c._id)
+
+block barebody
+    +_deleteCard()

@@ -1,5 +1,6 @@
 include _cardEntries
 extends base
+include _deleteCard
 
 block append head
     script(src="/r/js/deleteCardButton.js")
@@ -13,3 +14,5 @@ block body
                 button.btn.btn-primary-outline.delete-card(data-card-id=card._id): i.fa.fa-trash
 
         mixin _cardEntries(card)
+
+
