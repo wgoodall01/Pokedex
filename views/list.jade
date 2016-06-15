@@ -11,20 +11,10 @@ block append head
 block body
     .page-header
         h1 Card Listing
-            .btn-group.btn-group-md.btn-group-header.pull-xs-right(data-toggle="buttons")
-                label.btn.btn-primary-outline#search-button
-                    input(type="checkbox")
-                    i.fa.fa-search
-                label.btn.btn-primary-outline#sort-button
-                    input(type="checkbox")
+            a(href="/find").btn.btn-primary-outline.pull-xs-right
+                    i.fa.fa-search.icon-margin-r
+                    span.icon-margin-r |
                     i.fa.fa-sort-alpha-asc
-
-        form(method="GET")
-            .hide.pad-vertical.search-form: +_findForm(filterCard)
-            .hide.pad-vertical.sort-form: +_sortForm(filter)
-
-            div.btn-container.hide
-                button.btn.btn-action.pad-vertical.go-button(type="submit")
     table.table.table-striped
         thead: tr
             th Name
