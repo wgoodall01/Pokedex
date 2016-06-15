@@ -9,17 +9,22 @@ block append head
 
 
 block body
-    .sticky.page-header
+    .page-header
         h1 Card Listing
-            .btn-group.btn-group-md.btn-group-header.pull-xs-right
-                .btn.btn-primary-outline#search-button: i.fa.fa-search
-                .btn.btn-primary-outline#sort-button: i.fa.fa-sort-alpha-asc
+            .btn-group.btn-group-md.btn-group-header.pull-xs-right(data-toggle="buttons")
+                label.btn.btn-primary-outline#search-button
+                    input(type="checkbox")
+                    i.fa.fa-search
+                label.btn.btn-primary-outline#sort-button
+                    input(type="checkbox")
+                    i.fa.fa-sort-alpha-asc
 
-        form(method="GET"): fieldset
+        form(method="GET")
             .hide.pad-vertical.search-form: +_findForm(filterCard)
             .hide.pad-vertical.sort-form: +_sortForm(filter)
 
-            button.btn.btn-action.pad-vertical.hide.go-button(type="submit")
+            div.btn-container.hide
+                button.btn.btn-action.pad-vertical.go-button(type="submit")
     table.table.table-striped
         thead: tr
             th Name
@@ -36,5 +41,5 @@ block body
                     td=c.series
                     td=c.expansion
                     td: div
-                        a.fa.fa-fw.fa-trash.delete-card.action-icon(href="", data-card-id=c._id)
-                        a.fa.fa-fw.fa-edit.action-icon(href="/view/" + c._id)
+                        a.fa.fa-fw.fa-trash.delete-card.action-icon.icon-margin-r(href="", data-card-id=c._id)
+                        a.fa.fa-fw.fa-edit.action-icon.icon-margin-r(href="/view/" + c._id)

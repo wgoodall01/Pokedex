@@ -2,7 +2,9 @@ include _cardEntries
 extends base
 
 block body
-    h1 Add a New Card
+    h1.page-header Add a New Card
     form(action="/add/", method="post")
         +_cardEntries({})
-        input.btn.btn-primary.btn-lg.action-btn(type="submit", value="Add Card")
+        button.btn.btn-action(type="submit")
+            i.fa.fa-plus-circle.icon-margin-r
+            span Add Card

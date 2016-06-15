@@ -5,6 +5,7 @@ $(document).ready(function(){
     var searchForm = $(".search-form");
     var sortForm = $(".sort-form");
     var goButton = $(".go-button");
+    var btnContainer = $(".btn-container");
 
     var searchVisibility = false;
     var sortVisibility = false;
@@ -23,9 +24,9 @@ $(document).ready(function(){
         }
         
         if(searchVisibility || sortVisibility){
-            goButton.slideDown(speed);
+            btnContainer.slideDown(speed);
         }else{
-            goButton.slideUp(speed);
+            btnContainer.slideUp(speed);
         }
         
         var goIcons = "";
@@ -34,7 +35,7 @@ $(document).ready(function(){
         if (sortVisibility){ goIcons += '<i class="fa fa-sort-alpha-asc"></i>'; }
         goButton.html(goIcons);
     };
-
+    
     $("#search-button").click(function(){
         searchVisibility = !searchVisibility;
         updateVisibility();
