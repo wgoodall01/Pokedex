@@ -1,0 +1,16 @@
+// ----------   Margins, Widths, Padding
+.pad-vertical{
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.container-fluid{
+   max-width:900px;
+ }
+
+.body{
+  margin-top:20px;
+}
+
+// ----------   Utility Classes
+.hide{ display:none; }

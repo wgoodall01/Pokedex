@@ -4,26 +4,26 @@ block vars
 
 html
     head
-        title= title || "Pokedex"
-
-        //Mobile support
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-
-        //Google fonts
-        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto+Slab:400')
-
-        //Font awesome via CDN
-        link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
-
-        //Base stylesheet
-        link(rel='stylesheet', href='/r/css/base.css')
-
-        //jQuery & jQuery UI & Bootstrap JS & Bootstrap3-dialog
-        script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
-        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js")
-        script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/js/bootstrap-dialog.min.js")
-
         block head
+            title= title || "Pokedex"
+
+            //Mobile support
+            meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+            //Google fonts
+            link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto+Slab:400')
+
+            //Font awesome via CDN
+            link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
+
+            //Base stylesheet
+            link(rel='stylesheet', href='/r/css/base.css')
+
+            //jQuery & jQuery UI & Bootstrap JS & Bootstrap3-dialog
+            script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+            script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js")
+            script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/js/bootstrap-dialog.min.js")
+
     body
         //Navbar
         nav.navbar.navbar-light.bg-faded: .container-fluid
@@ -35,7 +35,7 @@ html
             form.form-inline.pull-xs-right(action="/list", method="get")
                 .input-group
                     input.form-control(type='text', name="name", placeholder="Find by Name")
-                    span.input-group-btn: button.btn.btn-secondary(type='submit'): i.fa.fa-search
+                    span.input-group-btn: button.btn.btn-primary-outline(type='submit'): i.fa.fa-search
         //Main body
         .container-fluid
             //Flashes

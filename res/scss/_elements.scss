@@ -1,0 +1,19 @@
+.inline-subheading{
+  color:$gray-light;
+  float:right;
+  font-style:italic;
+  font-size: $font-size-h6;
+  text-align:right;
+  line-height: $font-size-h2
+}
+
+.page-header{
+  background-color:fade-out($body-bg, 0.05);
+  border-bottom:1px solid $brand-primary;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}

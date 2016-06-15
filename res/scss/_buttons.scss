@@ -1,0 +1,6 @@
+.btn-action{
+  @extend .btn-primary;
+  @extend .btn-lg;
+  margin:0 auto;
+  width:200px;
+}

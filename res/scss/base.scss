@@ -14,48 +14,8 @@ $input-box-shadow-focus: fade-out($brand-primary, .5);
 @import "bootstrap";
 @import "_variables";
 
+@import "_icons";
+@import "_buttons";
+@import "_utility";
+@import "_elements";
 
-.container-fluid{
-  max-width:900px;
-}
-
-.body{
-  padding-top:20px;
-}
-
-.btn-group-header{
-  margin-top:.2rem;
-}
-
-.btn-action{
-  @extend .btn-primary;
-  @extend .btn-lg;
-  margin:0 auto;
-  width:200px;
-}
-
-.action-icon{
-  color:$gray-light;
-
-  &:hover{
-    color:$gray-dark;
-  }
-}
-
-.pad-vertical{
-  margin-top:20px;
-  margin-bottom:20px;
-}
-
-.hide{ display:none; }
-
-.page-header{
-  background-color:fade-out($body-bg, 0.05);
-  border-bottom:1px solid $brand-primary;
-}
-
-.sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-}

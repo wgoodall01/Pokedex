@@ -2,17 +2,18 @@ include _cardEntries
 extends base
 include _queryControls
 
-block head
+block append head
     script(src="/r/js/list.js")
     script(src="/r/js/deleteCardButton.js")
+    +_queryControlsScripts
 
 
 block body
     .sticky.page-header
         h1 Card Listing
             .btn-group.btn-group-md.btn-group-header.pull-xs-right
-                .btn.btn-secondary-outline#search-button: i.fa.fa-search
-                .btn.btn-secondary-outline#sort-button: i.fa.fa-sort-alpha-asc
+                .btn.btn-primary-outline#search-button: i.fa.fa-search
+                .btn.btn-primary-outline#sort-button: i.fa.fa-sort-alpha-asc
 
         form(method="GET"): fieldset
             .hide.pad-vertical.search-form: +_findForm(filterCard)

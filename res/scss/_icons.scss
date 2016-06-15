@@ -1,0 +1,12 @@
+.icon-margin-r{
+  margin-right:10px;
+}
+
+.action-icon{
+  color:$gray-light;
+
+  &:hover{
+    color:$gray-dark;
+    text-decoration:none;
+  }
+}

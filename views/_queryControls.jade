@@ -1,16 +1,24 @@
 include _cardEntries
 
+mixin _queryControlsScripts()
+    script(src="/r/js/sortPriorities.js")
+
 mixin _findForm(card)
     fieldset
-        legend Filter
+        legend
+            i.fa.fa-search.icon-margin-r
+            span Filter
+            h6.inline-subheading Regular Expressions are supported in all fields.
         +_cardEntries(card || {})
 
 mixin _sortForm(filter)
     fieldset
-        legend Sort
+        legend
+            i.fa.fa-sort-alpha-asc.icon-margin-r
+            span Sort
         .sort-params
         button.btn.btn-block.add-sort
-            i.fa.fa-plus-circle
+            i.fa.fa-plus-circle.icon-margin-r
             span Add a Sort Qualifier
 
 
