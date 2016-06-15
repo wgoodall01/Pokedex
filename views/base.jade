@@ -9,35 +9,41 @@ html
         //Mobile support
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
-        // Bootstrap & Normalize
-        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css')
-        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'
-        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-        crossorigin="anonymous")
-
         //Google fonts
         link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto+Slab:400')
+
+        //Font awesome via CDN
+        link(rel='stylesheet', src="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
+
+        //Base stylesheet
+        link(rel='stylesheet', href='/r/css/base.css')
 
         //jQuery & Bootstrap JS & Bootstrap3-dialog
         script(src="https://code.jquery.com/jquery-2.2.4.min.js")
         script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/js/bootstrap-dialog.min.js")
 
-
-        //Base stylesheet
-        link(rel='stylesheet', href='/r/css/base.css')
-
         block head
     body
-        nav.navbar.navbar-default.navbar-top: .container-fluid
-            .navbar-header: a(href="/").navbar-brand Pokedex
-            ul.nav.navbar-nav.navbar-left
-                li: a(href="/list") All Cards
-                li: a(href="/add") Add
-                li: a(href="/find") Find
-            form.navbar-form.navbar-right(action="/list", method="get")
+        //Navbar
+        nav.navbar.navbar-light.bg-faded: .container-fluid
+            a(href="/").navbar-brand Pokedex
+            ul.nav.navbar-nav
+                li.nav-item: a(href="/list").nav-link All Cards
+                li.nav-item: a(href="/add").nav-link Add
+                li.nav-item: a(href="/find").nav-link Find
+            form.form-inline.pull-xs-right(action="/list", method="get")
                 .input-group
                     input.form-control(type='text', name="name", placeholder="Find by Name")
-                    span.input-group-btn: button.btn.btn-default(type='submit') Go!
-
-        .container-fluid: block body
+                    span.input-group-btn: button.btn.btn-secondary(type='submit') Go!
+        //Main body
+        .container-fluid
+            //Flashes
+            .messages
+                if (messages.info)
+                    each message in messages.info
+                        .alert.alert-success
+                            button.close(type="button", data-dismiss="alert")
+                            strong=message
+            //Body
+            .body: block body

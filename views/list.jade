@@ -9,8 +9,8 @@ block head
 block body
     h1 Card Listing
         .pull-right.btn-group.btn-group-lg.card-controls
-            button.btn.btn-default#search-button: i.glyphicon.glyphicon-search
-            button.btn.btn-default#sort-button: i.glyphicon.glyphicon-sort-by-attributes
+            button.btn.btn-default#search-button: i.fa.fa-fw.fa-search
+            button.btn.btn-default#sort-button: i.fa.fa-fw.fa-sort-amount-desc
     form.pad-vertical#search-form(method="GET" hidden): fieldset
         legend Find a Card
         +_cardEntries(filterCard || {})

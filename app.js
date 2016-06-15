@@ -1,14 +1,32 @@
 var express = require('express');
-var morgan = require('morgan');
+
+//App parts
 var routes = require("./routes");
-var Datastore = require('nedb');
-var sass = require('node-sass-middleware');
-var minifyHTML = require("express-minify-html")
+var nocache = require('./lib/noCacheMiddleware');
 
 var app = express();
 
 //Configure Express
+app.set("resource-cfg", {
+    sass:{
+        source: __dirname + "/res/scss",
+        dest: __dirname + "/res/css-out",
+        urlPrefix: "/r/css/",
+        includePaths:["node_modules/bootstrap/scss"]
+    },
+    js: {
+        urlPrefix: "/r/js",
+        location: __dirname + "/res/js"
+    }
+});
+
+app.set("middleware-cfg", {
+    morganType:'dev'
+});
+
 app.set('port', (process.env.PORT || 8080));
+app.set('env', process.env.DEBUG 
+    && ![].includes(process.env.DEBUG.toLowerCase()));
 app.set("views", "./views");
 app.set("view engine", "jade");
 express.static.mime.define({
@@ -16,61 +34,19 @@ express.static.mime.define({
     "application/javascript": ["js"]
 });
 
-//Logging
-app.use(morgan('dev'));
+//Add middleware
+require("./lib/addMiddleware")(app);
 
-//Compile SASS
-var SASS_SRC = __dirname + "/res/scss";
-var SASS_DEST = __dirname + "/res/css-out";
-var SASS_PREFIX = "/r/css";
+//Add resources
+require("./lib/addRespources")(app);
 
-app.use(SASS_PREFIX, sass({
-    src:SASS_SRC,
-    dest:SASS_DEST,
-    outputStyle:'compressed',
-    prefix: SASS_PREFIX
-}));
-app.use(SASS_PREFIX, express.static(SASS_DEST));
+//Start database
+var db = require("./lib/database")(app);
 
-//Minify HTML
-app.use(minifyHTML({
-    override:      true,
-    htmlMinifier: {
-        removeComments:            true,
-        collapseWhitespace:        true,
-        collapseBooleanAttributes: true,
-        removeAttributeQuotes:     true,
-        removeEmptyAttributes:     true,
-        minifyJS:                  true
-    }
-}));
+//Serve routes w/o cache
+app.use(nocache, routes(db));
 
-// Disable any kind of browser caching
-app.use(function(req, res, next) {
-    if(!/^\/r\//i.test(req.path)){
-        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-        res.header('Expires', '-1');
-        res.header('Pragma', 'no-cache');
-        next();
-    }
-});
-
-//Serve js
-app.use("/r/js", express.static(__dirname + "/res/js"));
-
-//Init database
-var db = {
-    pokemon: new Datastore({filename:__dirname + "/data/pokemon.db", autoload:true}),
-    trainers: new Datastore({filename:__dirname + "/data/trainers.db", autoload:true})    
-};
-
-//Parse form data on routes
-app.use(require('body-parser').urlencoded());
-
-//Serve routes
-app.use(routes(db));
-
-
+//Start server
 app.listen(app.get('port'), function() {
     console.log('Listening on port ', app.get('port'));
 });
