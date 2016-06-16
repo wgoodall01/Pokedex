@@ -20,7 +20,8 @@ module.exports = function(db){
             if(docs.length == 1){
                 res.redirect("/view/"+docs[0]._id);
             }else {
-                res.render('list.jade', {cards: docs, filterCard:queryFields})
+                req.flash("ayy lmao");
+                res.render('list.jade', {cards: docs, nameSearch:queryFields.name})
             }
         });
     };

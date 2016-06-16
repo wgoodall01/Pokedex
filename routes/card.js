@@ -10,7 +10,8 @@ module.exports = function(db){
 
         db.pokemon.findOne({_id:id}, function(err, doc){
             if(err || doc == null){
-                res.end("error. halp.");
+                req.flash("Card does not exist.");
+                res.redirect("/");
                 return;
             }
 

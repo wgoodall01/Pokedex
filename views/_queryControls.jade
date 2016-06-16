@@ -1,8 +1,5 @@
 include _cardEntries
 
-block append head
-    script(src="/r/js/sortPriorities.js")
-
 mixin _findForm(card)
     h3
         i.fa.fa-search.icon-margin-r
@@ -11,16 +8,43 @@ mixin _findForm(card)
     +_cardEntries(card || {})
 
 mixin _sortForm(filter)
+    script(src="/r/js/sortPriorities.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.4.2/Sortable.min.js")
+
+    -
+        var fields = [
+            ['Name', 'name'],
+            ['Quantity', 'quantity'],
+            ['Card Type', 'cardType'],
+            ['Actual Type', 'actualType'],
+            ['Level', 'level'],
+            ['Design', 'design'],
+            ['Series', 'series'],
+            ['Expansion', 'expansion']
+        ];
+
     h3
         i.fa.fa-sort-alpha-asc.icon-margin-r
         span Sort
+    .sorter-template.hide
+        .card
+            i.fa.fa-lg.fa-bars.grab-handle
+            select.c-select.icon-margin-r.pad-v-sm()
+                each opt in fields
+                    option(name=opt[1])= opt[0]
+            .btn-group(data-toggle="buttons")
+                label.btn.btn-primary-outline.fa.fa-sort-alpha-asc.no-margin.active
+                    input(type='radio' value="asc" hidden).no-margin.sort-direction-radio
+                label.btn.btn-primary-outline.fa.fa-sort-alpha-desc.no-margin
+                    input(type='radio' value="desc" hidden).no-margin.sort-direction-radio
+            i.fa.fa-lg.fa-close.pull-xs-right.action-icon.delete-sorter.pad-v-sm.pad-h-sm
     .sort-params
-    button.btn.btn-block.add-sort
+    button.btn.btn-block.btn-secondary-outline.add-sort(style="border:1px dashed;")
         i.fa.fa-plus-circle.icon-margin-r
         span Add a Sort Qualifier
 
 
 
 mixin _queryControls(card, filter)
-    .pad-vertical.search-form: +_findForm(filterCard)
-    .pad-vertical.sort-form: +_sortForm(filter)
+    .pad-v.search-form: +_findForm(filterCard)
+    .pad-v.sort-form: +_sortForm(filter)

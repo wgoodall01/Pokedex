@@ -34,25 +34,23 @@ html
                 li.nav-item: a(href="/find").nav-link Find
             form.form-inline.pull-xs-right(action="/list", method="get")
                 .input-group
-                    input.form-control(type='text', name="name", placeholder="Find by Name")
+                    input.form-control(type='text', name="name", placeholder="Find by Name", value=nameSearch || "")
                     span.input-group-btn: button.btn.btn-primary-outline(type='submit'): i.fa.fa-search
         //Main body
-        .container-fluid
+        .container-fluid.body
             //Flashes
+            - console.dir(flashMessages);
             .messages
-                if (messages.info)
-                    each message in messages.info
+                if (flashMessages.info)
+                    each message in flashMessages.info
                         .alert.alert-success
                             button.close(type="button", data-dismiss="alert")
                             strong=message
+                    each message in flashMessages.errors
+                        .alert.alert-danger
+                            button.close(type="button", data-dismiss="alert")
+                            strong= message
             //Body
-            .body: block body
-
-        //Load JS
-        script(src="/r/js/deleteCardButton.js")
-
-        //position:sticky polyfill & implementation
-        script(src="https://cdnjs.cloudflare.com/ajax/libs/stickyfill/1.1.4/stickyfill.min.js")
-        script(src="/r/js/sticky.js")
+            block body
 
         block barebody

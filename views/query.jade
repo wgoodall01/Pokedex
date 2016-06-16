@@ -2,8 +2,8 @@ include _queryControls
 extends base
 
 block body
-    h1.page-header Search Cards
-    form(action="/list/", method="get")
+    h1.page-header Find Cards
+    form(action="/list/", method="get").query-form
         +_queryControls(card, filter)
         button.btn.btn-action(type="submit")
             i.fa.fa-search.icon-margin-r

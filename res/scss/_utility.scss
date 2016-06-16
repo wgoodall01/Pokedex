@@ -1,7 +1,17 @@
 // ----------   Margins, Widths, Padding
-.pad-vertical{
+.pad-v {
   margin-top:20px;
   margin-bottom:20px;
+}
+
+.pad-v-sm {
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
+.pad-h-sm{
+  margin-left:5px;
+  margin-right:5px;
 }
 
 .container-fluid{
@@ -13,4 +23,5 @@
 }
 
 // ----------   Utility Classes
-.hide{ display:none; }
+.hide{ display:none !important; }
+.no-margin{ margin:0 !important;}
