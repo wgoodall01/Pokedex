@@ -1,10 +1,8 @@
 .inline-subheading{
   color:$gray-light;
-  float:right;
   font-style:italic;
   font-size: $font-size-h6;
   text-align:right;
-  line-height: $font-size-h3
 }
 
 .page-header{
@@ -16,4 +14,27 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+}
+
+.alert-meh{
+  border:1px dashed #ccc;
+  padding-top:2px;
+  padding-bottom:2px;
+  color:#ccc;
+
+  button.close{
+    padding:0;
+    margin:0;
+  }
+}
+
+.no-result-alert{
+  margin-top:50px;
+  border-radius: 5px;
+  border: 1px dashed #ccc;
+  max-width:400px;
+  height:200px;
+  padding-top:40px;
+  color:#ccc;
+  @include center-block();
 }

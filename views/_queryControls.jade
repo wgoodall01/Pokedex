@@ -4,7 +4,7 @@ mixin _findForm(card)
     h3
         i.fa.fa-search.icon-margin-r
         span Filter
-        span.inline-subheading Regular Expressions are supported in all fields.
+        span.inline-subheading.pull-xs-right Regular Expressions are supported in all fields.
     +_cardEntries(card || {})
 
 mixin _sortForm(filter)
@@ -39,7 +39,7 @@ mixin _sortForm(filter)
                     input(type='radio' value="desc" hidden).no-margin.sort-direction-radio
             i.fa.fa-lg.fa-close.pull-xs-right.action-icon.delete-sorter.pad-v-sm.pad-h-sm
     .sort-params
-    button.btn.btn-block.btn-secondary-outline.add-sort(style="border:1px dashed;")
+    button.btn.btn-block.btn-secondary-outline.add-sort(type="button", style="border:1px dashed;")
         i.fa.fa-plus-circle.icon-margin-r
         span Add a Sort Qualifier
 

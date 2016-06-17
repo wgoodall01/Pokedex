@@ -9,7 +9,6 @@ $(document).ready(function(){
         $(".modal-delete-button").off('click');
         $(".modal-delete-button").click(function(){
             $.post("/remove/" + cardId, function(data){
-                console.dir(data);
                 // $(document).emit('beforeunload');
                 $(`[data-card-id=${cardId}]`).closest("tr").remove();
                 $(".delete-modal").modal('hide');

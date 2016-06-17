@@ -17,26 +17,26 @@ mixin _LabeledEntry(args)
 
 mixin _cardEntries(card)
     .row
-        .col-sm-4.col-xs-9.form-group
+        .col-md-4.col-sm-9.form-group
             +_LabeledEntry({name:"name", label:"Name", value:card.name})
 
-        .col-sm-2.col-xs-3.form-group
+        .col-md-2.col-sm-3.form-group
             +_LabeledEntry({name:"quantity", label:"Qty.", value:card.quantity})
 
-        .col-sm-3.col-xs-6.form-group
+        .col-md-3.col-sm-6.form-group
             +_LabeledEntry({name:"cardType", label:"Card Type", value:card.cardType})
 
-        .col-sm-3.col-xs-6.form-group
+        .col-md-3.col-sm-6.form-group
             +_LabeledEntry({name:"actualType", label:"Actual Type", value:card.actualType})
 
-        .col-sm-3.col-xs-4.form-group
+        .col-md-3.col-sm-4.form-group
             +_LabeledEntry({name:"level", label:"Level", value:card.level})
 
-        .col-sm-5.col-xs-8.form-group
+        .col-md-5.col-sm-8.form-group
             +_LabeledEntry({name:"design", label:"Design", value:card.design})
 
-        .col-sm-2.col-xs-6.form-group
+        .col-md-2.col-sm-6.form-group
             +_LabeledEntry({name:"series", label:"Series", value:card.series})
-        .col-sm-2.col-xs-6.form-group
+        .col-md-2.col-sm-6.form-group
             +_LabeledEntry({name:"expansion", label:"Expansion", value:card.expansion})
 

@@ -4,7 +4,18 @@ $(document).ready(function(){
 
     var slideSpeed = 50;
 
-    var index = 0
+    var index = 0;
+    
+    var fieldNames = {
+        'Name': 'name',
+        'Quantity': 'quantity',
+        'Card Type': 'cardType',
+        'Actual Type': 'actualType',
+        'Level': 'level',
+        'Design': 'design',
+        'Series': 'series',
+        'Expansion': 'expansion'
+    };
 
     function addSort(e){
         if(e){
@@ -42,7 +53,7 @@ $(document).ready(function(){
         $(".sort-params").children().each(function(){
             $(this).find("input").removeAttr("name");
             var dir = $(this).children().find(".sort-direction-radio:checked").val();
-            var name = $(this).find("select").val();
+            var name = fieldNames[$(this).find("select").val()];
             sorts = sorts.concat([[dir, name]])
         });
 

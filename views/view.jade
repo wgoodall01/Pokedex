@@ -10,8 +10,8 @@ block body
     form(action=target, method="post")
         h1.page-header View a Card
             .btn-group.btn-group-md.btn-group-header.pull-xs-right
-                button.btn.btn-primary-outline(type="sumbit"): i.fa.fa-save
-                button.btn.btn-primary-outline.delete-card(data-card-id=card._id): i.fa.fa-trash
+                button.btn.btn-primary-outline(type="sumbit", data-toggle="tooltip", data-placement="bottom", title="Save Card"): i.fa.fa-save
+                button.btn.btn-primary-outline.delete-card(data-card-id=card._id data-toggle="tooltip", data-placement="bottom", title="Delete Card"): i.fa.fa-trash
 
         mixin _cardEntries(card)
 

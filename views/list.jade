@@ -8,29 +8,40 @@ block append head
 
 block body
     .page-header
-        h1 Card Listing
-            a(href="/find").btn.btn-primary-outline.pull-xs-right
+        h1 Card List
+            .btn-group.pull-xs-right
+                a(href="/add/").btn.btn-primary-outline
+                    i.fa.fa-plus
+                a(href="/find").btn.btn-primary-outline
                     i.fa.fa-search.icon-margin-r
-                    span.icon-margin-r |
+                    span.pad-h-sm
                     i.fa.fa-sort-alpha-asc
-    table.table.table-striped
-        thead: tr
-            th Name
-            th Qty.
-            th Type
-            th Series
-            th Expansion
-            th Actions
-        each c in cards
-                tr
-                    td: a(href="/view/" + c._id)=c.name
-                    td=c.quantity
-                    td=c.cardType
-                    td=c.series
-                    td=c.expansion
-                    td: div
-                        a.fa.fa-fw.fa-trash.delete-card.action-icon.icon-margin-r(href="", data-card-id=c._id)
-                        a.fa.fa-fw.fa-edit.action-icon.icon-margin-r(href="/view/" + c._id)
+            span.inline-subheading.margin-l.hidden-sm-down= listMessage
+    if cards.length > 0
+        table.table.table-striped
+            thead: tr
+                th Name
+                th Qty.
+                th Type
+                th Series
+                th Expansion
+                th
+            each c in cards
+                    tr
+                        td: a(href="/view/" + c._id)=c.name
+                        td=c.quantity
+                        td=c.cardType
+                        td=c.series
+                        td=c.expansion
+                        td: div
+                            a.fa.fa-fw.fa-trash.delete-card.action-icon.icon-margin-r(href="", data-card-id=c._id)
+                            a.fa.fa-fw.fa-edit.action-icon.icon-margin-r(href="/view/" + c._id)
+    else
+        .no-result-alert
+            h3.center-block.text-lg-center No results found.
+            a(href="/add/" style="width:200px; margin-top:10px;").btn.btn-lg.btn-secondary-outline.center-block
+                i.fa.fa-plus-circle.margin-r
+                span Add a Card
 
 block barebody
     +_deleteCard()
