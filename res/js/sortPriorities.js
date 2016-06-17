@@ -4,17 +4,28 @@ $(document).ready(function(){
 
     var slideSpeed = 50;
 
-    $(".add-sort").click(function(e){
-        e.preventDefault();
+    var index = 0
+
+    function addSort(e){
+        if(e){
+            e.preventDefault();
+        }
+
         var sortParams = $(".sort-params");
 
         var sorter = $("<div class='sorter'></div>");
         sorter.append($(".sorter-template").children().clone());
 
+        index++;
+        sorter.find("input").attr("name", "sort-dir-" + index);
+
         sorter.hide();
         sortParams.append(sorter);
         sorter.slideDown(slideSpeed);
-    });
+    }
+
+    $(".add-sort").click(addSort);
+    addSort();
     
     $(document).on("click", ".delete-sorter", function(e){
         $(this).closest(".card").slideUp(slideSpeed, function(){
@@ -23,14 +34,21 @@ $(document).ready(function(){
     });
 
     $(".query-form").on('submit', function(e){
-        e.preventDefault();
+        //Remove names from any empty elems so the search isn't clogged
+        $("input").filter(function(){return $(this).val().trim() == ""; }).removeAttr('name');
+
         var sortInput = $(`<input hidden name="sort" type="text"></input>`);
         var sorts = [];
         $(".sort-params").children().each(function(){
-            console.log($(this).find(".sort-direction-radio:checked").val());
-            console.log($(this).find("select").val());
+            $(this).find("input").removeAttr("name");
+            var dir = $(this).children().find(".sort-direction-radio:checked").val();
+            var name = $(this).find("select").val();
+            sorts = sorts.concat([[dir, name]])
         });
 
-        console.dir(sorts);
+        console.log(JSON.stringify(sorts));
+        if(sorts.length >= 1) {
+            $(this).append($(`<input hidden name="sortsJson" value=${JSON.stringify(sorts)}>`));
+        }
     })
 });
