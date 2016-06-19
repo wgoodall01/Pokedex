@@ -23,40 +23,41 @@ module.exports = function(db){
     };
     
     routes.update = function(req, res){
-        //Modify an existing record in the database
-        var id = req.params.id;
-        
+        //Modify an existing record in the database, or create one
         var normalCard = dbUtils.normalizeDbKeys(req.body);
         var validated = dbUtils.validateCard(normalCard);
-        
-        if(validated){
-            db.pokemon.update({_id:id}, validated, function(err, numReplaced){
-                res.redirect("/view/" + id);
-            })
-        } else {
-            req.flash("error", "Invalid card data - card not updated");
-            res.redirect("/view/" + id);
+        var id = req.params.id;
+
+        function updateCallback(err, dbRes) {
+            if(err){
+                req.flash("error", "Database error");
+                res.cancel()
+            } else{
+                res.redirect("/view/" + (dbRes._id || id));
+            }
         }
+
+        if(validated) {
+            if (id) {
+                //Request to modify a card
+                db.pokemon.update({_id:id}, validated, updateCallback)
+            } else {
+                //Request to create a card
+                db.pokemon.insert(validated, updateCallback)
+            }
+        } else {
+            req.flash("error", "Invalid card data - no changes made");
+            res.cancel();
+        }
+
     };
     
     routes.add = function(req, res){
         if(req.method == "GET"){
             res.render("add.jade", {titleVerb:"Add", target:"/add", card:{}})
         } else if(req.method == "POST"){
-            // Add the card to the database
-            
-            var normalCard = dbUtils.normalizeDbKeys(req.body);
-            var validated = dbUtils.validateCard(normalCard);
-
-            if(validated) {
-                db.pokemon.insert(validated, function (err, newDoc) {
-                    res.redirect("/view/" + newDoc._id);
-                })
-            } else {
-                req.flash("error", "Invalid card data - card not added");
-                res.redirect("/add/");
-            }
-
+            //Nothing
+            req.flash("error", "I removed this, it no longer works")
         }
     };
     

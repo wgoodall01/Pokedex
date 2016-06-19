@@ -17,6 +17,7 @@ module.exports = function(db){
     //  Redirects back to /view
     //  If there's no ID, create a new card
     r.post("/update/:id", card.update);
+    r.post("/update/", card.update);
        
     //POST -> Add a card
     //  Redirects to /view for that card
