@@ -5,7 +5,6 @@ mixin _LabeledEntry(args)
         type - The field's type (default text)
         placeholder - data placeholder (default Label)
         value - value placeholder (default nothing)
-        ID is auto-generated - #entry-<name>
     -
         args.type = args.type || 'text';
         args.placeholder = args.placeholder || args.label;
@@ -39,4 +38,4 @@ mixin _cardEntries(card)
             +_LabeledEntry({name:"series", label:"Series", value:card.series})
         .col-md-2.col-sm-6.form-group
             +_LabeledEntry({name:"expansion", label:"Expansion", value:card.expansion})
-
+    input(name="pokeId" hidden)

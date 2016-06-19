@@ -8,15 +8,15 @@ block append head
 
 block body
     .page-header
-        h1 Card List
-            .btn-group.pull-xs-right
-                a(href="/add/").btn.btn-primary-outline
-                    i.fa.fa-plus
-                a(href="/find").btn.btn-primary-outline
-                    i.fa.fa-search.icon-margin-r
-                    span.pad-h-sm
-                    i.fa.fa-sort-alpha-asc
-            span.inline-subheading.margin-l.hidden-sm-down= listMessage
+        h1.inline Card List
+        span.inline-subheading.margin-l.hidden-sm-down= listMessage
+        .btn-group.pull-xs-right
+            a(href="/add/").btn.btn-primary-outline
+                i.fa.fa-plus
+            a(href="/find").btn.btn-primary-outline
+                i.fa.fa-search.icon-margin-r
+                span.pad-h-sm
+                i.fa.fa-sort-alpha-asc
     if cards.length > 0
         table.table.table-striped
             thead: tr

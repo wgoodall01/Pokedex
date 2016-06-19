@@ -38,3 +38,11 @@
   color:#ccc;
   @include center-block();
 }
+
+.hover-btn-outline{
+  &:hover{
+    //@include button-variant($gray-dark, $body-bg, $gray-light);
+    box-shadow: inset 0 0 0 1px $brand-primary;
+    cursor:pointer;
+  }
+}

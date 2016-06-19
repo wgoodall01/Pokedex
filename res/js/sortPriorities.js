@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     Sortable.create($(".sort-params")[0]);
 
-    var slideSpeed = 50;
+    var slideSpeed = 'fast';
 
     var index = 0;
     

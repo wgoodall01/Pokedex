@@ -1,10 +1,29 @@
 include _cardEntries
 extends base
 
+block append barebody
+    script(src="/r/js/add.js")
+
 block body
-    h1.page-header Add a New Card
-    form(action="/update/", method="post")
-        +_cardEntries({})
-        button.btn.btn-action(type="submit")
-            i.fa.fa-plus-circle.icon-margin-r
-            span Add Card
+    .page-header
+        h1.inline Add a New Card
+        ul.nav.nav-pills.pull-xs-right
+            li.nav-item.nav-link.hover-btn-outline.pill-automatic.active
+                i.fa.fa-magic.margin-r
+                span Automatic
+            li.nav-item.nav-link.hover-btn-outline.pill-manual
+                i.fa.fa-cogs.margin-r
+                span Manual
+
+    .pane-automatic
+        form.search-form: .input-group.pad-v
+            input.search-name.form-control.form-control-lg(type='text', name="name", placeholder="Name")
+            span.input-group-btn: button.btn.btn-lg.btn-primary-outline(type='submit'): i.fa.fa-search.search-btn
+        .search-msg
+
+    .pane-manual.pad-v.hide
+        form(action="/update/", method="post")
+            +_cardEntries({})
+            button.btn.btn-action(type="submit")
+                i.fa.fa-plus-circle.icon-margin-r
+                span Add Card
