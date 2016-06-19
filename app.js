@@ -47,6 +47,12 @@ require("./lib/addRespources")(app);
 //Start database
 var db = require("./lib/database")(app);
 
+//Keep track of last route
+app.use(function(req, res, next){
+    req.session.lastPage = req.originalUrl;
+    next();
+});
+
 //Serve routes w/o cache
 app.use(nocache, routes(db));
 
