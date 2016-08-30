@@ -1,7 +1,6 @@
-# Pokedex
-Simple CRUD app to list and sort collections of Pokemon cards. The database is Nedb, so no additional dependencies are required.
+<h1 align="center">Pokedex</h1>
+<p align="center">Simple app to list and sort collections of Pokemon cards.</p>
 
----
 
 ## Installation
 ```
@@ -18,4 +17,3 @@ Navigate to `localhost:8080` to get started.
 |---|---|
 |`PORT`|Sets the port the app will listen on|
 |`DEBUG`| set to `yes`, `true`, or `1` for debug mode|
-
